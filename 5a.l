@@ -13,7 +13,7 @@ FILE *fp;
 <OPENP>")" {ECHO;bc--;BEGIN CLOSEP;}
 <OPENP>"(" {ECHO;bc++;}
 <OPENP>. {ECHO;}
-<CLOSEP>"{" {if(bc==0) {printf("condn is valid in line no %d\n",c+1);} condn\n",c+1); else printf("condn invalid in line no %d;Paranthesis mismatch in BEGIN OPENF;ECHO;printf("\n");fc++;}
+<CLOSEP>"{" {if(bc==0) {printf("condn is valid in line no %d\n",c+1);}  else printf("condn invalid in line no %d;Paranthesis mismatch in BEGIN OPENF condn\n",c+1);ECHO;printf("\n");fc++;}
 <CLOSEP>"(" {BEGIN OPENP;bc++;ECHO;}
 <CLOSEP>")" {ECHO;bc--;}
 <CLOSEP>. {ECHO;}
@@ -23,10 +23,9 @@ FILE *fp;
 <OPENF>\n {ECHO;c++;}
 .|\n ;
 %%
-main()
+int main()
 {
-yyin=fopen("source.txt","r");
+yyin=fopen("source6.txt","r");
 yylex();
 fclose(yyin);
 }
-
